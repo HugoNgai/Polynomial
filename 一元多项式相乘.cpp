@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------
-																		一元多项式相乘
+			一元多项式相乘
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 #include<iostream>
@@ -8,12 +8,12 @@ using namespace std;
 
 typedef struct Linklist
 {
-	float coef;									//coefficient
-	int expn;									//exponent
+	float coef;						//coefficient
+	int expn;						//exponent
 	struct Linklist *next;
 }Node,*Link;
 
-void attach(float coef, int expn, Link *L)					//attach the element to the end of linklist
+void attach(float coef, int expn, Link *L)			//attach the element to the end of linklist
 {
 	Node *P;
 	P = new Node;
@@ -44,7 +44,7 @@ Link creatlist()
 		scanf("%f %d", &a, &b);
 	}
 
-	temp = head;											//delete the head node
+	temp = head;					//delete the head node
 	head = head->next;
 	delete temp;
 
@@ -98,7 +98,7 @@ Link add(Link L1, Link L2)
 	for (; L2; L2 = L2->next)
 		attach(L2->coef, L2->expn, &cur);
 
-	temp = head;											//delete the head node
+	temp = head;						//delete the head node
 	head = head->next;
 	delete temp;
 
@@ -115,7 +115,7 @@ Link mult(Link L1, Link L2)
 	float c;
 	int e;
 	
-	while (L2)															//the first number of item L1 multiply L2
+	while (L2)							//the first number of item L1 multiply L2
 	{
 		attach(L1->coef*L2->coef, L1->expn + L2->expn, &cur);
 		L2 = L2->next;
@@ -135,20 +135,20 @@ Link mult(Link L1, Link L2)
 		
 			if (cur->next&&cur->next->expn == e)
 			{
-				if (cur->next->coef + c)									//coef!=0
+				if (cur->next->coef + c)				//coef!=0
 					cur->next->coef += c;
-				else														//delete the node
+				else						        //delete the node
 				{
 					temp = cur->next;
 					cur->next = cur->next->next;
 					delete temp;
 				}
 			}
-			else															//expn<e
+			else								//expn<e
 			{
 				temp = new Node;
 				temp->coef = c;
-				temp->expn = e;												//attach the new list into the result list
+				temp->expn = e;						//attach the new list into the result list
 				temp->next = cur->next;
 				cur->next = temp;
 				cur = cur->next;
@@ -157,7 +157,7 @@ Link mult(Link L1, Link L2)
 		L2 = startL2;
 	}
 
-	temp = head;															//delete the head node
+	temp = head;									//delete the head node
 	head = head->next;
 	delete temp;
 
