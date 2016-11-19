@@ -148,7 +148,7 @@ Link mult(Link L1, Link L2)
 			{
 				temp = new Node;
 				temp->coef = c;
-				temp->expn = e;						//attach the new list into the result list
+				temp->expn = e;						//attach the new list to the result list
 				temp->next = cur->next;
 				cur->next = temp;
 				cur = cur->next;
